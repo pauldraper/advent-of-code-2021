@@ -1,25 +1,19 @@
 #!/usr/bin/env python3
 import sys
 
+pairs = {")": "(", "]": "[", "}": "{", ">": "<"}
 scores = []
 
 for line in sys.stdin:
     stack = []
     for c in line.strip():
-        if c == ")":
-            if not stack or stack.pop() != "(":
-                break
-        elif c == "]":
-            if not stack or stack.pop() != "[":
-                break
-        elif c == "}":
-            if not stack or stack.pop() != "{":
-                break
-        elif c == ">":
-            if not stack or stack.pop() != "<":
-                break
-        else:
+        try:
+            other = pairs[c]
+        except KeyError:
             stack.append(c)
+        else:
+            if not stack or stack.pop() != other:
+                break
     else:
         score = 0
         for c in reversed(stack):
