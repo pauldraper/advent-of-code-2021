@@ -1,7 +1,3 @@
-Advent of Code[About][Events][Shop][Settings][Log Out]Paul Draper 12*
-  0.0.0.0:2021[Calendar][AoC++][Sponsors][Leaderboard][Stats]
-Our sponsors help make Advent of Code possible:
-TCGplayer.com - - . Hiring .NET & . . JS engineers. . . Help us serve . . our community . . of game stores. . & hobbyists!! . ---- JOIN US ----
 --- Day 6: Lanternfish ---
 The sea floor is getting steeper. Maybe the sleigh keys got carried this way?
 
