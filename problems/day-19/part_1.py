@@ -16,22 +16,21 @@ def rotate(point, rx, ry, rz):
 
 
 def match(origin_beacons, beacons):
-    origin_set = set(origin_beacons)
     for rotation in itertools.product(range(4), repeat=3):
         rotated_beacons = [rotate(b, *rotation) for b in beacons]
         for origin_beacon in origin_beacons:
             for beacon in rotated_beacons:
                 offset = tuple(map(operator.sub, origin_beacon, beacon))
-                offset_beacons = [
+                offset_beacons = set(
                     tuple(map(operator.add, b, offset)) for b in rotated_beacons
-                ]
-                if 12 <= len(set(offset_beacons) & origin_set):
+                )
+                if 12 <= len(origin_beacons & offset_beacons):
                     return offset_beacons
 
 
 scanners = []
 for section in sys.stdin.read().strip().split("\n\n"):
-    scanner = [tuple(map(int, line.split(","))) for line in section.split("\n")[1:]]
+    scanner = set(tuple(map(int, line.split(","))) for line in section.split("\n")[1:])
     scanners.append(scanner)
 
 
@@ -40,6 +39,7 @@ answer = set()
 
 
 def search(i, beacons):
+    print("MATCHED", i)
     answer.update(beacons)
     visited.add(i)
     for i, scanner in enumerate(scanners):
