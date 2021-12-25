@@ -9,7 +9,7 @@ for line in sys.stdin:
     x1, x2 = map(int, x.split("=")[1].split(".."))
     y1, y2 = map(int, y.split("=")[1].split(".."))
     z1, z2 = map(int, z.split("=")[1].split(".."))
-    
+
     for x in range(max(-50, x1), min(x2, 50) + 1):
         for y in range(max(-50, y1), min(y2, 50) + 1):
             for z in range(max(-50, z1), min(z2, 50) + 1):
